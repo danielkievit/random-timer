@@ -3,6 +3,7 @@ import datetime
 import random
 from playsound import playsound
 import re
+import os
 
 minTime = re.split(':', input("Minimum time [MM:SS]: "))
 minSeconds = int(minTime[0]) * 60 + int(minTime[1])
@@ -20,7 +21,6 @@ def countdown(total_seconds):
         total_seconds -= 1
     print("\nCOUNTDOWN HAS FINISHED\n")
     print("TIME: " + str(randomSeconds // 60) + ':' + str(randomSeconds % 60))
-    playsound('c:/Users/danie/OneDrive/Documents/Coding/random-timer/alarm.wav')
-    # playsound('alarm.wav') # why does this give an error
+    playsound(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'alarm.wav'))
 
 countdown(randomSeconds)
